@@ -2,14 +2,23 @@
 	
 </head>
 <body>
-	<% for(var i=rows.length; i > Math.max(rows.length - listLength, 1); i--){ %>
+	<% for(var i=rows.length; i >= Math.max(rows.length - listLength, 1); i--){ %>
 		<%if (rows[i] != null) { %>
-			<div class = "info-row">
-				<div class = "info-tile info-amount"><p><%= rows[i][0][0]%></p></div>
-				<div class = "info-tile info-price"><p><%= rows[i][0][1]%></p></div>
-				<div class = "info-tile info-value"><p><%= Math.round(100 * Math.abs(rows[i][0][1]*rows[i][0][0])) / 100%></p></div>
-				<div class = "info-tile info-timestamp"><p><%= rows[i][0][2]%></p></div>		
-			</div>
+			<%if (rows[i][0][0] > 0) { %>
+				<div class = "info-row">
+					<div class = "info-tile info-amount"><p><%= rows[i][0][0]%></p></div>
+					<div class = "info-tile info-price"><p><%= rows[i][0][1]%></p></div>
+					<div class = "info-tile info-value" style = "background-color: #98fb98"><p><%= Math.round(100 * Math.abs(rows[i][0][1]*rows[i][0][0])) / 100%></p></div>
+					<div class = "info-tile info-timestamp"><p><%= rows[i][0][2]%></p></div>		
+				</div>
+			<% }else { %>
+				<div class = "info-row">
+					<div class = "info-tile info-amount"><p><%= rows[i][0][0]%></p></div>
+					<div class = "info-tile info-price"><p><%= rows[i][0][1]%></p></div>
+					<div class = "info-tile info-value" style = "background-color: #ff9a9a"><p><%= Math.round(100 * Math.abs(rows[i][0][1]*rows[i][0][0])) / 100%></p></div>
+					<div class = "info-tile info-timestamp"><p><%= rows[i][0][2]%></p></div>		
+				</div>
+			<% } %>
 		<% } %>
 	<% } %>
 </body>

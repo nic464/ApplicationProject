@@ -38,16 +38,23 @@ fs.watch(__dirname + inputFile, (eventType, filename) => {
 //in the public folder
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
-  res.render('index', {
-  	rows: Data,
-  	listLength: 15
-  });
+  if (req.query.length == null) {
+  	res.render('index', {
+  		rows: Data,
+  		listLength: 15
+  	});	
+  } else {
+  	res.render('index', {
+  		rows: Data,
+  		listLength: req.query.length
+  	});
+  } 
+  
   //reader.end();
   //res.send('Hello World!')
 })
 
 app.get('/dataLoader', (req, res) => {
-    console.log(req.query.length);
   res.render('dataLoader', {
   	rows: Data,
   	listLength: req.query.length

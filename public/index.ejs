@@ -1,15 +1,40 @@
 <!-- Put your index html code here -->
 <head>
-	<link rel="stylesheet" href="css/animate.css">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="css/animate.css">
+	<link rel="stylesheet" type="text/css" href="css/Header-Icons.css">
 	<script type="text/javascript">
-		var listLength = 15;
+		var listLength = <%= listLength %>;
 
-		window.setInterval(function() {
+		var refreshId = window.setInterval(function() {
 			refresh();
-		}, 5000);
+		}, 2000);
 
 		function setLength(choice) {
 			listLength = choice;
+		}
+
+		function pause() {
+			clearInterval(refreshId);
+		}
+
+		function resume() {
+			//location.reload(true);
+			var xhttp = new XMLHttpRequest();
+			
+			xhttp.onreadystatechange = function () {
+				if(xhttp.readyState == XMLHttpRequest.DONE) {
+					if(xhttp.status == 200) {
+						document.open();
+						document.write(xhttp.responseText);
+						document.close();
+					} else {
+						alert("Unexpected server response // Refresh Issue")
+					}
+				}
+			}
+			xhttp.open("GET", "../?length=" + listLength, true);
+			xhttp.send();
 		}
 
 		function refresh() {
@@ -20,8 +45,6 @@
 					if(xhttp.status == 200) {
 						var loader = document.getElementById("loader");
 						loader.innerHTML = xhttp.responseText;
-						
-						setInterval(refresh, 50000);
 					} else {
 						alert("Unexpected server response // Refresh Issue")
 					}
@@ -32,8 +55,11 @@
 		}
 	</script>
 	<style type="text/css">
-		.wrapper {
-			/*box-sizing: border-box;*/
+		body {
+			background-color: #ffd394;
+		}
+
+		.wrapper {	
 			display: grid;
 			grid-gap: 2em;
 			grid-template-columns: 1fr 3fr;
@@ -45,27 +71,26 @@
 			grid-row: 1 / 5;
 
 			position: fixed;
-			height: 96%;
-
-			background-color: blue;
-			border-radius: 5px;
-			border: 2px solid black;
+			height: 120%;
+			margin-top: -2%;
 
 			/* Make this a nested grid */
 			display: grid;
 			grid-template-rows: repeat(3, 1fr);
 			grid-template-columns: 1fr;
+			grid-row-gap: 1em;
 		}
 
 		.info {
 			/* Properties for this div as a grid item */
 			grid-column: 2;
-			grid-row: 2 / 4;
+			grid-row: 1 / 4;
 			height: 100px;
 			/* Make this a nested grid */		
 			display: grid;
 			grid-template-rows: 1fr;
 			grid-template-columns: repeat(4, 1fr);
+			grid-row-gap: 1em;
 		}
 
 		.header {
@@ -91,13 +116,14 @@
 
 		#loader {
 			grid-column: 1 / 5;
+			padding: 3px;
+			border: 1px solid black;
 		}
 
 		.info-row {
 			/* Make this a nested grid */
 			display: grid;
 			grid-template-columns: repeat(4, 1fr); 
-			border-radius: 10px;
 		}
 
 		.info-tile {
@@ -110,24 +136,123 @@
   			display: table-cell; 
 		}
 
-		.wrapper:nth_child(odd) {
-			background-color: #000;
+		.navbar-nav {
+			list-style-type: none;
+			border-radius: 10px;
+    		float:left;
+
+			/* Make this a nested grid */
+			display: grid;
+			grid-template-columns: 1fr;
+			grid-template-rows: repeat(3, 1fr);
+			width: 20em;
 		}
 
-		.info-row:nth-of-type(odd) {
-			background-color: #eee;
+		.container {
+			margin-left: -20%;
 		}
+
+		.list-wrap {
+			height: 13em;
+		}
+
+		.glyphicon {
+			/*height: 6em;*/
+			width: 5em;
+			text-align: right;
+			vertical-align: middle;
+			display: table-cell;
+			font-family: "HelveticaNeue-CondensedBold";
+			font-size: 50vw;
+
+    		margin-bottom: 10px;
+    		padding-top: 5px;
+    		color: white;
+		}
+
+		/* Imported from ___ and modified */
+		#colorful-nav {
+			width: 100%
+			float: left;
+    		padding-bottom: 1em;
+    		border: 1px transparent;
+		}
+
+		#colorful-nav .navbar {
+   			margin-bottom: 0px;
+		}
+
+		#colorful-nav {
+		    background-color: transparent;
+		}
+
+		#colorful-nav ul>div {
+    		float:left;
+    		text-align: center;
+    		width: 14.2%
+    		padding-bottom: 13px;
+    		transition: 0.2s padding-left;
+		}
+
+		#colorful-nav ul>div:hover {
+    		padding-left: 15%;
+		}
+
+		#colorful-nav .glyphicon {
+    		font-size: 30px;
+    		margin-bottom: 10px;
+    		padding-top: 5px;
+    		color: white;
+		}
+
+		#colorful-nav .home {
+    		background-color: #ff9900;
+		}	
+
+		#colorful-nav .action {
+    		background-color: #ff9900;
+		}
+
+		#colorful-nav .about {
+    		background-color: #ff9900;
+		}
+
+		@media screen and (max-width: 767px){
+
+    		.colorful-nav ul>li {
+       			text-align: center;
+       			width: 100%;
+    		}
+
+    		.colorful-nav ul>li:hover{
+        		padding-top: 0px;
+    		}	
+		}
+
 	</style>
 </head>
 <body>
 <div class = "wrapper">
 	<div id = "sidebar">
-		<h1>Home</h1>
-		<h1>Trade Action</h1>
-		<h1>About</h1>
+		<nav class="navbar navbar-default" id="colorful-nav">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <div class = "list-wrap home"><li><span class="glyphicon"><h5>Home</h5></span></li></div>
+                    <div class = "list-wrap action"><li><span class="glyphicon"><h5>Trading Action</h5></span></li></div>
+                    <div class = "list-wrap about"><li><span class="glyphicon"><h5>About</h5></span></li></div>
+                </ul>
+            </div>
+        </div>
+    	</nav>
 	</div>
 	<div class = "info">
 		<div class = "header"><h2>BTCUSD</h2></div>
+		<div id = "choice">
+			<div><span>Control the arrival of information: </span></div>
+			<button onclick="pause()">Pause</button>
+			<button onclick="resume()">Resume</button>
+		</div>
 		<div id = "choice">
 			<div><span>How many orders should we display at a time?</span></div>
 			<button onclick="setLength(10)">10 orders</button>
