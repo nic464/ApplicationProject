@@ -1,0 +1,17 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "Framework for application project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adam Manuel and Nicolas Smart-Rengifo",
+  "license": "ISC",
+  "dependencies": {
+    "ws": "*",
+    "ejs": "*",
+    "express": "*",
+    "csv-parse": "*"
+  }
+}
