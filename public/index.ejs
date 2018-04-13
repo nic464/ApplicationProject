@@ -1,0 +1,145 @@
+<!-- Put your index html code here -->
+<head>
+	<link rel="stylesheet" href="css/animate.css">
+	<script type="text/javascript">
+		var listLength = 15;
+
+		window.setInterval(function() {
+			refresh();
+		}, 5000);
+
+		function setLength(choice) {
+			listLength = choice;
+		}
+
+		function refresh() {
+			var xhttp = new XMLHttpRequest();
+			
+			xhttp.onreadystatechange = function () {
+				if(xhttp.readyState == XMLHttpRequest.DONE) {
+					if(xhttp.status == 200) {
+						var loader = document.getElementById("loader");
+						loader.innerHTML = xhttp.responseText;
+						
+						setInterval(refresh, 50000);
+					} else {
+						alert("Unexpected server response // Refresh Issue")
+					}
+				}
+			}
+			xhttp.open("GET", "../dataLoader?length=" + listLength, true);
+			xhttp.send();
+		}
+	</script>
+	<style type="text/css">
+		.wrapper {
+			/*box-sizing: border-box;*/
+			display: grid;
+			grid-gap: 2em;
+			grid-template-columns: 1fr 3fr;
+			grid-template-rows: repeat(4, 1fr);
+		}
+
+		#sidebar {
+			grid-column: 1 / 2;
+			grid-row: 1 / 5;
+
+			position: fixed;
+			height: 96%;
+
+			background-color: blue;
+			border-radius: 5px;
+			border: 2px solid black;
+
+			/* Make this a nested grid */
+			display: grid;
+			grid-template-rows: repeat(3, 1fr);
+			grid-template-columns: 1fr;
+		}
+
+		.info {
+			/* Properties for this div as a grid item */
+			grid-column: 2;
+			grid-row: 2 / 4;
+			height: 100px;
+			/* Make this a nested grid */		
+			display: grid;
+			grid-template-rows: 1fr;
+			grid-template-columns: repeat(4, 1fr);
+		}
+
+		.header {
+			grid-column: 1 / 5;
+			animation: 1s ease-out 0s 1 swing;
+
+			font-family: "Comic Sans MS", "Comic Sans", cursive;
+			font-size: 30px;
+		}
+
+		#choice {
+			grid-column: 1 / 5;
+
+			/* Make this a nested grid */
+			display: grid;
+			grid-template-columns: 5fr 1fr 1fr 1fr 1fr;
+			grid-template-rows: 1fr;
+		}
+
+		#choice > button {
+			height: 2em;
+		}
+
+		#loader {
+			grid-column: 1 / 5;
+		}
+
+		.info-row {
+			/* Make this a nested grid */
+			display: grid;
+			grid-template-columns: repeat(4, 1fr); 
+			border-radius: 10px;
+		}
+
+		.info-tile {
+			height: 2em;
+		}
+
+		.info-tile > p {
+			text-align:center; 
+  			vertical-align: middle;
+  			display: table-cell; 
+		}
+
+		.wrapper:nth_child(odd) {
+			background-color: #000;
+		}
+
+		.info-row:nth-of-type(odd) {
+			background-color: #eee;
+		}
+	</style>
+</head>
+<body>
+<div class = "wrapper">
+	<div id = "sidebar">
+		<h1>Home</h1>
+		<h1>Trade Action</h1>
+		<h1>About</h1>
+	</div>
+	<div class = "info">
+		<div class = "header"><h2>BTCUSD</h2></div>
+		<div id = "choice">
+			<div><span>How many orders should we display at a time?</span></div>
+			<button onclick="setLength(10)">10 orders</button>
+			<button onclick="setLength(15)">15 orders</button>
+			<button onclick="setLength(25)">25 orders</button>
+			<button onclick="setLength(50)">50 orders</button>
+		</div>
+		<div><h4>Amount</h4></div>
+		<div><h4>Price</h4></div>
+		<div><h4>Value</h4></div>
+		<div><h4>Timestamp</h4></div>
+		<div id = "loader"><%- include dataLoader.ejs %></div>
+	</div>
+</div>
+</body>
