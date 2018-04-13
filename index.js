@@ -49,9 +49,6 @@ app.get('/', (req, res) => {
   		listLength: req.query.length
   	});
   } 
-  
-  //reader.end();
-  //res.send('Hello World!')
 })
 
 app.get('/dataLoader', (req, res) => {
@@ -59,8 +56,10 @@ app.get('/dataLoader', (req, res) => {
   	rows: Data,
   	listLength: req.query.length
   });
-  //reader.end();
-  //res.send('Hello World!')
+})
+
+app.get('/home', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'home.html'));
 })
 
 //Hosts the server on specified port

@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<style type="text/css">
+			#sidebar {
+				grid-column: 1 / 2;
+				grid-row: 1 / 5;
+
+				position: fixed;
+				height: 120%;
+				margin-top: -2%;
+
+				/* Make this a nested grid */
+				display: grid;
+				grid-template-rows: repeat(3, 1fr);
+				grid-template-columns: 1fr;
+				grid-row-gap: 1em;
+			}
+		</style>
+	</head>
+	<body>
+		<div id = "sidebar">
+		<nav class="navbar navbar-default" id="colorful-nav">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <div class = "list-wrap home"><li><span class="glyphicon"><h5>Home</h5></span></li></div>
+                    <div class = "list-wrap action"><li><span class="glyphicon"><h5>Trading Action</h5></span></li></div>
+                    <div class = "list-wrap about"><li><span class="glyphicon"><h5>About</h5></span></li></div>
+                </ul>
+            </div>
+        </div>
+    	</nav>
+	</div>
+	</body>
+</html>

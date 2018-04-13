@@ -19,7 +19,6 @@
 		}
 
 		function resume() {
-			//location.reload(true);
 			var xhttp = new XMLHttpRequest();
 			
 			xhttp.onreadystatechange = function () {
@@ -112,6 +111,7 @@
 
 		#choice > button {
 			height: 2em;
+			float: right;
 		}
 
 		#loader {
@@ -229,6 +229,41 @@
     		}	
 		}
 
+		@keyframes swing {
+  			20% {
+    			-webkit-transform: rotate3d(0, 0, 1, 15deg);
+    			transform: rotate3d(0, 0, 1, 15deg);
+  			}
+
+  			40% {
+    			-webkit-transform: rotate3d(0, 0, 1, -10deg);
+    			transform: rotate3d(0, 0, 1, -10deg);
+  			}
+
+  			60% {
+    			-webkit-transform: rotate3d(0, 0, 1, 5deg);
+    			transform: rotate3d(0, 0, 1, 5deg);
+  			}
+
+  			80% {
+   				-webkit-transform: rotate3d(0, 0, 1, -5deg);
+    			transform: rotate3d(0, 0, 1, -5deg);
+  			}
+
+			to {
+   				-webkit-transform: rotate3d(0, 0, 1, 0deg);
+    			transform: rotate3d(0, 0, 1, 0deg);
+  			}
+		}
+
+		.swing {
+  			-webkit-transform-origin: top center;
+  			transform-origin: top center;
+  			-webkit-animation-name: swing;
+  			animation-name: swing;
+		}
+
+
 	</style>
 </head>
 <body>
@@ -238,7 +273,7 @@
         <div class="container">
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <div class = "list-wrap home"><li><span class="glyphicon"><h5>Home</h5></span></li></div>
+                    <div class = "list-wrap home" id = "home-link"><li><span class="glyphicon"><h5>Home</h5></span></li></div>
                     <div class = "list-wrap action"><li><span class="glyphicon"><h5>Trading Action</h5></span></li></div>
                     <div class = "list-wrap about"><li><span class="glyphicon"><h5>About</h5></span></li></div>
                 </ul>
@@ -247,7 +282,7 @@
     	</nav>
 	</div>
 	<div class = "info">
-		<div class = "header"><h2>BTCUSD</h2></div>
+		<div class = "header animated swing"><h2>BTCUSD</h2></div>
 		<div id = "choice">
 			<div><span>Control the arrival of information: </span></div>
 			<button onclick="pause()">Pause</button>
