@@ -9,11 +9,8 @@ const app = express()
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'public'));
 
-function Row(amount, price, time){
-	this.Amount = amount;
-	this.Price = price;
-	this.Time = time;
-}
+// Tell express where to find static resources
+app.use(express.static(path.join(__dirname, '/public/assets')));
 
 var Data = [];
 
@@ -25,7 +22,6 @@ fs.watch(__dirname + inputFile, (eventType, filename) => {
 	file = file.substring(file.indexOf("\n"));
 	file = file.substring(file.indexOf("\n"));
 	line = file.substring(file.substring(0, file.lastIndexOf("\n")).lastIndexOf("\n") + 1, file.lastIndexOf("\n"));
-	//console.log(line);
 	parse(line, function(err, output) {
 		var tmp = output;
 		if(tmp != undefined){
@@ -41,7 +37,7 @@ app.get('/', (req, res) => {
   if (req.query.length == null) {
   	res.render('index', {
   		rows: Data,
-  		listLength: 15
+  		listLength: 10
   	});	
   } else {
   	res.render('index', {
@@ -60,6 +56,10 @@ app.get('/dataLoader', (req, res) => {
 
 app.get('/home', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'home.html'));
+})
+
+app.get('/about', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'about.html'));
 })
 
 //Hosts the server on specified port

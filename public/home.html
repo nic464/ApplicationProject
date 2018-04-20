@@ -1,35 +1,45 @@
 <html>
-	<head>
-		<style type="text/css">
-			#sidebar {
-				grid-column: 1 / 2;
-				grid-row: 1 / 5;
+<head>
+	<link rel="stylesheet" type="text/css" href="main.css"/>	
+	<script type="text/javascript" src="tool.js"></script>
+	<title>Coding Project</title>
 
-				position: fixed;
-				height: 120%;
-				margin-top: -2%;
+	<style>
+		body, html {
+			height: 100%;
+			margin: 0;
 
-				/* Make this a nested grid */
-				display: grid;
-				grid-template-rows: repeat(3, 1fr);
-				grid-template-columns: 1fr;
-				grid-row-gap: 1em;
-			}
-		</style>
-	</head>
-	<body>
-		<div id = "sidebar">
-		<nav class="navbar navbar-default" id="colorful-nav">
-        <div class="container">
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    <div class = "list-wrap home"><li><span class="glyphicon"><h5>Home</h5></span></li></div>
-                    <div class = "list-wrap action"><li><span class="glyphicon"><h5>Trading Action</h5></span></li></div>
-                    <div class = "list-wrap about"><li><span class="glyphicon"><h5>About</h5></span></li></div>
-                </ul>
-            </div>
-        </div>
-    	</nav>
+			background-image: url("trade-bars-opaque.jpg"); background-repeat: repeat;
+			background-size: 100% 100%;
+		}
+	</style>
+</head>
+<body>
+
+	<div id = "sidebar">
+		<div class="container">
+	    	    <ul class="nav navbar-nav" id="colorful-nav">
+    	            <div class = "list-wrap home"><li><span class="glyphicon"><h5 onclick="getRequest(1)">Home</h5></span></li></div>
+    	            <div class = "list-wrap action"><li><span class="glyphicon"><h5 onclick="getRequest(2)">Trading Action</h5></span></li></div>
+    	            <div class = "list-wrap about"><li><span class="glyphicon"><h5 onclick="getRequest(3)">About</h5></span></li></div>
+    	        </ul>
+		</div>
 	</div>
-	</body>
+
+	<div id = "message">
+		<h1>Coding Project: My First Foray Into NodeJS</h1>
+		<p>
+			Thank you for taking the time to look at my first nodejs, express experiment. After getting past the initial learning curve, I completely understand why nodejs is so popular!
+		</p>
+		<p>
+			Some things I would like to point out about this project:
+			<ol class = "message-list">
+				<li class = "message-bullet">"Trading Action" is the central webpage. Here, I used ejs to create a table that refreshes dynamically with the latest Bitcoin transaction data (all data is provided by Bitfinex). The refresh script can be paused in order to look more closely at the data, then resumed.</li>
+				<li class = "message-bullet">The user can choose the maximum number of rows of data to display at a time. I have provided the options of 10, 50, 100, or 200, but theoretically any number could be chosen and the page would adjust.</li>
+				<li class = "message-bullet">I added an animation to notify the user every time the flow of data is resumed.</li>
+				<li class = "message-bullet">The sidebar allows the user to request different pages from the express server.</li>
+			</ol>
+		</p>
+	</div>
+</body>
 </html>

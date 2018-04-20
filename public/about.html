@@ -1,0 +1,36 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="main.css"/>
+	<script type="text/javascript" src="tool.js"></script>
+	<title>Coding Project</title>	
+
+	<style>
+		body, html {
+			height: 100%;
+			margin: 0;
+
+			background-image: url("trade-bars-opaque.jpg"); background-repeat: repeat;
+			background-size: 100% 100%;
+		}
+	</style>
+</head>
+<body>
+	<div id = "background-container"><!--Holds the background image for the site--></div>
+
+	<div id = "sidebar">
+		<div class="container">
+	    	    <ul class="nav navbar-nav" id="colorful-nav">
+    	            <div class = "list-wrap home"><li><span class="glyphicon"><h5 onclick="getRequest(1)">Home</h5></span></li></div>
+    	            <div class = "list-wrap action"><li><span class="glyphicon"><h5 onclick="getRequest(2)">Trading Action</h5></span></li></div>
+    	            <div class = "list-wrap about"><li><span class="glyphicon"><h5 onclick="getRequest(3)">About</h5></span></li></div>
+    	        </ul>
+		</div>
+	</div>
+
+	<div id = "message">
+		<p style = "text-align: center; padding-top: 88%">
+			This was completed in April 2018
+		</p>
+	</div>
+</body>
+</html>

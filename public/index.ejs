@@ -1,8 +1,8 @@
 <!-- Put your index html code here -->
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="css/animate.css">
-	<link rel="stylesheet" type="text/css" href="css/Header-Icons.css">
+	<link rel="stylesheet" type="text/css" href="main.css"/>
+	<script type="text/javascript" src="tool.js"></script>
 	<script type="text/javascript">
 		var listLength = <%= listLength %>;
 
@@ -53,253 +53,42 @@
 			xhttp.send();
 		}
 	</script>
-	<style type="text/css">
-		body {
-			background-color: #ffd394;
-		}
-
-		.wrapper {	
-			display: grid;
-			grid-gap: 2em;
-			grid-template-columns: 1fr 3fr;
-			grid-template-rows: repeat(4, 1fr);
-		}
-
-		#sidebar {
-			grid-column: 1 / 2;
-			grid-row: 1 / 5;
-
-			position: fixed;
-			height: 120%;
-			margin-top: -2%;
-
-			/* Make this a nested grid */
-			display: grid;
-			grid-template-rows: repeat(3, 1fr);
-			grid-template-columns: 1fr;
-			grid-row-gap: 1em;
-		}
-
-		.info {
-			/* Properties for this div as a grid item */
-			grid-column: 2;
-			grid-row: 1 / 4;
-			height: 100px;
-			/* Make this a nested grid */		
-			display: grid;
-			grid-template-rows: 1fr;
-			grid-template-columns: repeat(4, 1fr);
-			grid-row-gap: 1em;
-		}
-
-		.header {
-			grid-column: 1 / 5;
-			animation: 1s ease-out 0s 1 swing;
-
-			font-family: "Comic Sans MS", "Comic Sans", cursive;
-			font-size: 30px;
-		}
-
-		#choice {
-			grid-column: 1 / 5;
-
-			/* Make this a nested grid */
-			display: grid;
-			grid-template-columns: 5fr 1fr 1fr 1fr 1fr;
-			grid-template-rows: 1fr;
-		}
-
-		#choice > button {
-			height: 2em;
-			float: right;
-		}
-
-		#loader {
-			grid-column: 1 / 5;
-			padding: 3px;
-			border: 1px solid black;
-		}
-
-		.info-row {
-			/* Make this a nested grid */
-			display: grid;
-			grid-template-columns: repeat(4, 1fr); 
-		}
-
-		.info-tile {
-			height: 2em;
-		}
-
-		.info-tile > p {
-			text-align:center; 
-  			vertical-align: middle;
-  			display: table-cell; 
-		}
-
-		.navbar-nav {
-			list-style-type: none;
-			border-radius: 10px;
-    		float:left;
-
-			/* Make this a nested grid */
-			display: grid;
-			grid-template-columns: 1fr;
-			grid-template-rows: repeat(3, 1fr);
-			width: 20em;
-		}
-
-		.container {
-			margin-left: -20%;
-		}
-
-		.list-wrap {
-			height: 13em;
-		}
-
-		.glyphicon {
-			/*height: 6em;*/
-			width: 5em;
-			text-align: right;
-			vertical-align: middle;
-			display: table-cell;
-			font-family: "HelveticaNeue-CondensedBold";
-			font-size: 50vw;
-
-    		margin-bottom: 10px;
-    		padding-top: 5px;
-    		color: white;
-		}
-
-		/* Imported from ___ and modified */
-		#colorful-nav {
-			width: 100%
-			float: left;
-    		padding-bottom: 1em;
-    		border: 1px transparent;
-		}
-
-		#colorful-nav .navbar {
-   			margin-bottom: 0px;
-		}
-
-		#colorful-nav {
-		    background-color: transparent;
-		}
-
-		#colorful-nav ul>div {
-    		float:left;
-    		text-align: center;
-    		width: 14.2%
-    		padding-bottom: 13px;
-    		transition: 0.2s padding-left;
-		}
-
-		#colorful-nav ul>div:hover {
-    		padding-left: 15%;
-		}
-
-		#colorful-nav .glyphicon {
-    		font-size: 30px;
-    		margin-bottom: 10px;
-    		padding-top: 5px;
-    		color: white;
-		}
-
-		#colorful-nav .home {
-    		background-color: #ff9900;
-		}	
-
-		#colorful-nav .action {
-    		background-color: #ff9900;
-		}
-
-		#colorful-nav .about {
-    		background-color: #ff9900;
-		}
-
-		@media screen and (max-width: 767px){
-
-    		.colorful-nav ul>li {
-       			text-align: center;
-       			width: 100%;
-    		}
-
-    		.colorful-nav ul>li:hover{
-        		padding-top: 0px;
-    		}	
-		}
-
-		@keyframes swing {
-  			20% {
-    			-webkit-transform: rotate3d(0, 0, 1, 15deg);
-    			transform: rotate3d(0, 0, 1, 15deg);
-  			}
-
-  			40% {
-    			-webkit-transform: rotate3d(0, 0, 1, -10deg);
-    			transform: rotate3d(0, 0, 1, -10deg);
-  			}
-
-  			60% {
-    			-webkit-transform: rotate3d(0, 0, 1, 5deg);
-    			transform: rotate3d(0, 0, 1, 5deg);
-  			}
-
-  			80% {
-   				-webkit-transform: rotate3d(0, 0, 1, -5deg);
-    			transform: rotate3d(0, 0, 1, -5deg);
-  			}
-
-			to {
-   				-webkit-transform: rotate3d(0, 0, 1, 0deg);
-    			transform: rotate3d(0, 0, 1, 0deg);
-  			}
-		}
-
-		.swing {
-  			-webkit-transform-origin: top center;
-  			transform-origin: top center;
-  			-webkit-animation-name: swing;
-  			animation-name: swing;
-		}
-
-
-	</style>
+	<title>Coding Project</title>
 </head>
+
 <body>
-<div class = "wrapper">
+	<div id = "background-container"><!--Holds the background image for the site--></div>
+	
 	<div id = "sidebar">
-		<nav class="navbar navbar-default" id="colorful-nav">
-        <div class="container">
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    <div class = "list-wrap home" id = "home-link"><li><span class="glyphicon"><h5>Home</h5></span></li></div>
-                    <div class = "list-wrap action"><li><span class="glyphicon"><h5>Trading Action</h5></span></li></div>
-                    <div class = "list-wrap about"><li><span class="glyphicon"><h5>About</h5></span></li></div>
-                </ul>
-            </div>
-        </div>
-    	</nav>
+    	<div class="container">
+    	        <ul class="nav navbar-nav" id="colorful-nav">
+    	            <div class = "list-wrap home"><li><span class="glyphicon"><h5 onclick="getRequest(1)">Home</h5></span></li></div>
+    	            <div class = "list-wrap action"><li><span class="glyphicon"><h5 onclick="getRequest(2)">Trading Action</h5></span></li></div>
+    	            <div class = "list-wrap about"><li><span class="glyphicon"><h5 onclick="getRequest(3)">About</h5></span></li></div>
+    	        </ul>
+    	</div>
 	</div>
-	<div class = "info">
+
+	<button id = "pauseButton" onclick="pause()">Pause</button>
+	<button id = "resumeButton" onclick="resume()">Resume</button>
+
+	<div id = "info">
 		<div class = "header animated swing"><h2>BTCUSD</h2></div>
-		<div id = "choice">
-			<div><span>Control the arrival of information: </span></div>
-			<button onclick="pause()">Pause</button>
-			<button onclick="resume()">Resume</button>
-		</div>
-		<div id = "choice">
+		<div class = "choice">
 			<div><span>How many orders should we display at a time?</span></div>
 			<button onclick="setLength(10)">10 orders</button>
-			<button onclick="setLength(15)">15 orders</button>
-			<button onclick="setLength(25)">25 orders</button>
 			<button onclick="setLength(50)">50 orders</button>
+			<button onclick="setLength(100)">100 orders</button>
+			<button onclick="setLength(200)">200 orders</button>
 		</div>
-		<div><h4>Amount</h4></div>
-		<div><h4>Price</h4></div>
-		<div><h4>Value</h4></div>
-		<div><h4>Timestamp</h4></div>
+		<div><!--Empty Filler--></div>
+		<div><!--Empty Filler--></div>
+		<div><h4 class = "info-tile">Amount</h4></div>
+		<div><h4 class = "info-tile">Price</h4></div>
+		<div><h4 class = "info-tile">Value</h4></div>
+		<div><h4 class = "info-tile">Timestamp</h4></div>
+		<div><!--Empty Filler--></div>
+		<div style = "min-height: 18em"><!--Empty Filler--></div>
 		<div id = "loader"><%- include dataLoader.ejs %></div>
 	</div>
-</div>
 </body>
